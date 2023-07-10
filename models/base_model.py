@@ -12,13 +12,16 @@ class BaseModel:
     for other classes used in AirBnB_clone
     """
 
-    def __init__(self, *arg, **kwargs):
+    def __init__(self, *args, **kwargs):
         """initialization"""
         self.id = self._generate_id()
         self.created_at = self.updated_at = self._get_curr_time()
 
         if len(kwargs) != 0:
             self._assign_attributes(kwargs)
+        else:
+            from models import storage
+            storage.new(self)
 
     def __str__(self):
         """prints the instance of the class in string type
@@ -30,7 +33,9 @@ class BaseModel:
 
     def save(self):
         """saves the instance atttributes of the class"""
+        from models import storage
         self.updated_at = self._get_curr_time()
+        storage.save()
 
     def to_dict(self):
         """creates a dictionary representation with
