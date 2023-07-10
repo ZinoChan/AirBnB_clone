@@ -45,6 +45,3 @@ class BaseModel:
             else:
                 new_dict[key] = self.__dict__[key]
         return new_dict
-
-
-test = BaseModel()
