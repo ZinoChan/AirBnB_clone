@@ -19,17 +19,13 @@ class HBNBCommand(cmd.Cmd):
         return True
 
     def do_EOF(self, line):
-        """_summary_
-
-        Args:
-            line (str): end of the line (ctr-D)
-
-        Returns:
-            _type_: returns true if end of the line
+        """ Ctr-D exit the program
         """
         return True
 
     def emptyline(self):
+        """Ensures that empty line + ENTER doesn't execute anything
+        """
         pass
 
 
