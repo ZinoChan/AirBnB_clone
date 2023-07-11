@@ -95,7 +95,7 @@ class HBNBCommand(cmd.Cmd):
         else:
             key = args[0] + "." + args[1]
             obj_dict = storage.all()
-            self.update_instance_attr(self, obj_dict, key, args[2], args[3])
+            self.update_instance_attr(obj_dict, key, args[2], args[3])
 
     def print_instance(self, obj_dict, key):
         """
