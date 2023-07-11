@@ -6,7 +6,7 @@ import cmd
 import shlex
 from models import storage
 from models.base_model import BaseModel
-
+from models.user import User
 
 
 class HBNBCommand(cmd.Cmd):
@@ -18,6 +18,7 @@ class HBNBCommand(cmd.Cmd):
     prompt = "(hbnb) "
     __ALLOWED_CLASSES = {
         'BaseModel': BaseModel,
+        'User': User
     }
 
     def arg_checker(self, args, id_needed=True):
