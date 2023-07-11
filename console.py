@@ -156,6 +156,7 @@ class HBNBCommand(cmd.Cmd):
     def do_EOF(self, line):
         """ Ctr-D exit the program
         """
+        print ()
         return True
 
     def emptyline(self):
