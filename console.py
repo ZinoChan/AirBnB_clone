@@ -138,12 +138,13 @@ class HBNBCommand(cmd.Cmd):
         """
         if key in obj_dict:
             if attr_name not in ["id", "created_at", "updated_at"]:
-                try:
-                    attr_type = type(getattr(obj_dict[key], attr_name))
-                    obj_dict[key].__dict__[attr_name] = attr_type(attr_value)
+                    if hasattr(obj_dict[key], attr_name):
+                        attr_type = type(getattr(obj_dict[key], attr_name))
+                        setattr(obj_dict[key], attr_name, attr_type(attr_value))
+                    else:
+                        setattr(obj_dict[key], attr_name, attr_value)
+
                     obj_dict[key].save()
-                except AttributeError:
-                    print("** attribute doesn't exist **")
             else:
                 print("** attribute can't be updated **")
         else:
