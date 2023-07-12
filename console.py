@@ -7,6 +7,12 @@ import shlex
 from models import storage
 from models.base_model import BaseModel
 from models.user import User
+from models.state import State
+from models.city import City
+from models.place import Place
+from models.amenity import Amenity
+from models.review import Review
+
 
 
 class HBNBCommand(cmd.Cmd):
@@ -18,7 +24,12 @@ class HBNBCommand(cmd.Cmd):
     prompt = "(hbnb) "
     __ALLOWED_CLASSES = {
         'BaseModel': BaseModel,
-        'User': User
+        'User': User,
+        'State': State,
+        'City': City,
+        'Amenity': Amenity,
+        'Place': Place,
+        'Review': Review
     }
 
     def arg_checker(self, args, id_needed=True):
@@ -121,17 +132,14 @@ class HBNBCommand(cmd.Cmd):
         """
         Prints all the instances
         """
-        for obj in instances:
-            print(obj)
+        print ([str(obj) for obj in instances])
 
     def print_all_instances_by_class(self, instances, class_name):
         """
             Prints the string representation of instances of a specific class
         """
-        for obj in instances:
-            if type(obj).__name__ == class_name:
-                print(obj)
-
+        print ([str(obj) for obj in instances if obj.__class__.__name__ == class_name])
+        
     def update_instance_attr(self, obj_dict, key, attr_name, attr_value):
         """
         Updates an attribute of an instance
