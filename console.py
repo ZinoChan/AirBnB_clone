@@ -12,6 +12,7 @@ from models.city import City
 from models.place import Place
 from models.amenity import Amenity
 from models.review import Review
+import re
 
 
 class HBNBCommand(cmd.Cmd):
@@ -172,25 +173,31 @@ class HBNBCommand(cmd.Cmd):
         """Ensures that empty line + ENTER doesn't execute anything"""
         pass
 
-    def default(self, line):
-        """Retrieve all instances of a class by using:
-        <class name>.all()
-        """
-        if "." in line:
-            line = line.replace(".", " ").replace("()", "")
-            line = line.split()
-            line = f"{line[1]} {line[0]}"
-        self.onecmd(line)
+    def default(self, arg):
+        command_map = {
+            "all": self.do_all,
+            "show": self.do_show,
+            "destroy": self.do_destroy,
+            "count": self.do_count,
+            "update": self.do_update
+        }
+        match = re.search(r"\.(\w+)\((.*?)\)$", arg)
 
-    def do_count(self, line):
-        """_summary_"""
+        if match is not None:
+            class_name = arg[:match.start()]
+            command, args = match.groups()
+            if command in command_map.keys():
+                full_command = f"{class_name} {args}"
+                command_map[command](full_command)
+
+
+    def do_count(self, arg):
+        """
+        Counts the number of instances of a specific class
+        """
         count = 0
-        args = line.split()
-        if not self.arg_checker(args, False):
-            return
-        for key in storage.all().keys():
-            class_name, k = key.split(".")
-            if class_name == args[0]:
+        for obj in storage.all().values():
+            if arg == obj.__class__.__name__:
                 count += 1
         print(count)
 
