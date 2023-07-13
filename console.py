@@ -14,22 +14,22 @@ from models.amenity import Amenity
 from models.review import Review
 
 
-
 class HBNBCommand(cmd.Cmd):
-    """ Command Interpreter
+    """Command Interpreter
 
     Args:
         cmd (ob): object of the module cmd
     """
+
     prompt = "(hbnb) "
     __ALLOWED_CLASSES = {
-        'BaseModel': BaseModel,
-        'User': User,
-        'State': State,
-        'City': City,
-        'Amenity': Amenity,
-        'Place': Place,
-        'Review': Review
+        "BaseModel": BaseModel,
+        "User": User,
+        "State": State,
+        "City": City,
+        "Amenity": Amenity,
+        "Place": Place,
+        "Review": Review,
     }
 
     def arg_checker(self, args, id_needed=True):
@@ -46,6 +46,7 @@ class HBNBCommand(cmd.Cmd):
             print("** class doesn't exist **")
             return False
         return True
+
     def do_create(self, arg):
         """
         Creates a new instance of BaseModel
@@ -132,48 +133,67 @@ class HBNBCommand(cmd.Cmd):
         """
         Prints all the instances
         """
-        print ([str(obj) for obj in instances])
+        print([str(obj) for obj in instances])
 
     def print_all_instances_by_class(self, instances, class_name):
         """
-            Prints the string representation of instances of a specific class
+        Prints the string representation of instances of a specific class
         """
-        print ([str(obj) for obj in instances if obj.__class__.__name__ == class_name])
-        
+        print([str(obj) for obj in instances if obj.__class__.__name__ == class_name])
+
     def update_instance_attr(self, obj_dict, key, attr_name, attr_value):
         """
         Updates an attribute of an instance
         """
         if key in obj_dict:
             if attr_name not in ["id", "created_at", "updated_at"]:
-                    if hasattr(obj_dict[key], attr_name):
-                        attr_type = type(getattr(obj_dict[key], attr_name))
-                        setattr(obj_dict[key], attr_name, attr_type(attr_value))
-                    else:
-                        setattr(obj_dict[key], attr_name, attr_value)
+                if hasattr(obj_dict[key], attr_name):
+                    attr_type = type(getattr(obj_dict[key], attr_name))
+                    setattr(obj_dict[key], attr_name, attr_type(attr_value))
+                else:
+                    setattr(obj_dict[key], attr_name, attr_value)
 
-                    obj_dict[key].save()
+                obj_dict[key].save()
             else:
                 print("** attribute can't be updated **")
         else:
             print("** no instance found **")
 
     def do_quit(self, line):
-        """ Quit Command to exit the program
-        """
+        """Quit Command to exit the program"""
         return True
 
     def do_EOF(self, line):
-        """ Ctr-D exit the program
-        """
-        print ()
+        """Ctr-D exit the program"""
+        print()
         return True
 
     def emptyline(self):
-        """Ensures that empty line + ENTER doesn't execute anything
-        """
+        """Ensures that empty line + ENTER doesn't execute anything"""
         pass
 
+    def default(self, line):
+        """Retrieve all instances of a class by using:
+        <class name>.all()
+        """
+        if "." in line:
+            line = line.replace(".", " ").replace("()", "")
+            line = line.split()
+            line = f"{line[1]} {line[0]}"
+        self.onecmd(line)
 
-if __name__ == '__main__':
+    def do_count(self, line):
+        """_summary_"""
+        count = 0
+        args = line.split()
+        if not self.arg_checker(args, False):
+            return
+        for key in storage.all().keys():
+            class_name, k = key.split(".")
+            if class_name == args[0]:
+                count += 1
+        print(count)
+
+
+if __name__ == "__main__":
     HBNBCommand().cmdloop()
