@@ -179,17 +179,28 @@ class HBNBCommand(cmd.Cmd):
             "show": self.do_show,
             "destroy": self.do_destroy,
             "count": self.do_count,
-            "update": self.do_update
+            "update": self.do_update,
         }
         match = re.search(r"\.(\w+)\((.*?)\)$", arg)
 
         if match is not None:
-            class_name = arg[:match.start()]
-            command, args = match.groups()
+            class_name = arg[: match.start()]
+            command = match.group(1)
+            args = match.group(2).split(", ")
             if command in command_map.keys():
-                full_command = f"{class_name} {args}"
-                command_map[command](full_command)
-
+                if len(args) == 0:
+                    full_command = f"{command} {class_name}"
+                elif len(args) == 1:
+                    full_command = f"{command} {class_name} {args[0]}"
+                elif len(args) == 3:
+                    full_command = (
+                        f"{command} {class_name} {args[0]} {args[1]} {args[2]}"
+                    )
+                self.onecmd(full_command)
+            else:
+                print(f"{arg}: does not exit")
+        else:
+            return cmd.Cmd.default(self, arg)
 
     def do_count(self, arg):
         """
