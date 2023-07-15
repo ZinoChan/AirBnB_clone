@@ -1,4 +1,6 @@
 #!/usr/bin/python3
+""" TEST_CASES for Place class
+"""
 import unittest
 from models.place import Place
 

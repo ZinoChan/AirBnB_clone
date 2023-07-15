@@ -1,4 +1,6 @@
 #!/usr/bin/python3
+""" TEST_CASES for BaseModel class
+"""
 import unittest
 from datetime import datetime
 from models.base_model import BaseModel
@@ -8,18 +10,27 @@ class TestBaseModel(unittest.TestCase):
     """Unittests for BaseModel class."""
 
     def setUp(self):
+        """Setting Instantiation"""
         self.base_model = BaseModel()
 
     def test_id_generation(self):
+        """Testing Unique ID generation method
+        """
         self.assertIsNotNone(self.base_model.id)
 
     def test_created_at(self):
+        """Testing the 'craeted_at' attribute assingment
+        """
         self.assertIsInstance(self.base_model.created_at, datetime)
 
     def test_updated_at(self):
+        """Testing the 'updated_at' attribute assingment
+        """
         self.assertIsInstance(self.base_model.updated_at, datetime)
 
     def test_attributes_assignment(self):
+        """Testing Atrribute assignment
+        """
         attributes = {
             "name": "Test",
             "value": 10,
@@ -33,6 +44,8 @@ class TestBaseModel(unittest.TestCase):
         self.assertIsInstance(base_model.updated_at, datetime)
 
     def test_to_dict(self):
+        """Teing to_dict() method
+        """
         base_model_dict = self.base_model.to_dict()
         self.assertIsInstance(base_model_dict, dict)
         self.assertIn("__class__", base_model_dict)

@@ -1,4 +1,6 @@
 #!/usr/bin/python3
+""" TEST_CASES for City class
+"""
 import unittest
 from models.city import City
 from models.base_model import BaseModel
