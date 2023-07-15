@@ -6,6 +6,7 @@ from models.base_model import BaseModel
 
 class TestBaseModel(unittest.TestCase):
     """Unittests for BaseModel class."""
+
     def setUp(self):
         self.base_model = BaseModel()
 
@@ -23,7 +24,7 @@ class TestBaseModel(unittest.TestCase):
             "name": "Test",
             "value": 10,
             "created_at": "2023-07-15T12:00:00.000000",
-            "updated_at": "2023-07-15T12:30:00.000000"
+            "updated_at": "2023-07-15T12:30:00.000000",
         }
         base_model = BaseModel(**attributes)
         self.assertEqual(base_model.name, "Test")
@@ -50,5 +51,6 @@ class TestBaseModel(unittest.TestCase):
         self.assertIn(self.base_model.id, base_model_str)
         self.assertIn(str(self.base_model.__dict__), base_model_str)
 
-if __name__ == '__main__':
+
+if __name__ == "__main__":
     unittest.main()
