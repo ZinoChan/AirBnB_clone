@@ -6,8 +6,8 @@ from models.place import Place
 
 
 class TestPlace(unittest.TestCase):
-    """ Unittest for class Place """
-    
+    """Unittest for class Place"""
+
     def setUp(self):
         """Setting Instantiation"""
         self.place = Place()
