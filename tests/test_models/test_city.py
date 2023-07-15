@@ -4,11 +4,13 @@ from models.city import City
 from models.base_model import BaseModel
 
 
-class CityTestCase(unittest.TestCase):
+class TestCity(unittest.TestCase):
     def setUp(self):
         self.city = City()
 
     def test_default_attr(self):
+        """testing default attributes
+        """
         self.assertEqual(self.city.name, "")
         self.assertEqual(self.city.state_id, "")
 
