@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 from uuid import uuid4
 from datetime import datetime
+import models
 
 """This Module is the BaseModel class defines all common
     attributes/methods for other classes
