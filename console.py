@@ -61,7 +61,8 @@ class HBNBCommand(cmd.Cmd):
 
     def do_show(self, arg):
         """
-        Prints the string representation of an instance based on the class name and id
+        Prints the string representation of an instance
+        based on the class name and id
         """
         args = shlex.split(arg)
         if not self.arg_checker(args):
@@ -83,7 +84,8 @@ class HBNBCommand(cmd.Cmd):
 
     def do_all(self, arg):
         """
-        Prints all string representation of all instances based on the class name
+        Prints all string representation of all instances
+        based on the class name
         """
         args = shlex.split(arg)
         if len(args) == 0:
@@ -95,7 +97,8 @@ class HBNBCommand(cmd.Cmd):
 
     def do_update(self, arg):
         """
-        Updates an instance based on the class name and id by adding or updating an attribute
+        Updates an instance based on the class name
+        and id by adding or updating an attribute
         """
         args = shlex.split(arg)
         if not self.arg_checker(args):
@@ -138,9 +141,11 @@ class HBNBCommand(cmd.Cmd):
 
     def print_all_instances_by_class(self, instances, class_name):
         """
-        Prints the string representation of instances of a specific class
+        Prints the string representation of instances of
+        a specific class
         """
-        print([str(obj) for obj in instances if obj.__class__.__name__ == class_name])
+        print([str(obj)
+               for obj in instances if obj.__class__.__name__ == class_name])
 
     def update_instance_attr(self, obj_dict, key, attr_name, attr_value):
         """

@@ -2,12 +2,14 @@
 """ Defines Amenity Class """
 from models.base_model import BaseModel
 
+
 class Amenity(BaseModel):
-    """ Amenity class that inherites from BaseModel class
+    """Amenity class that inherites from BaseModel class
 
     Args:
         BaseModel (class): A Base Class for sub classes
     """
+
     place_id = ""
     user_id = ""
     text = ""

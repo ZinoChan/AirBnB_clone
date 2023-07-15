@@ -21,6 +21,7 @@ class BaseModel:
             self._assign_attributes(kwargs)
         else:
             from models import storage
+
             storage.new(self)
 
     def __str__(self):
@@ -34,6 +35,7 @@ class BaseModel:
     def save(self):
         """saves the instance atttributes of the class"""
         from models import storage
+
         self.updated_at = self._get_curr_time()
         storage.save()
 
@@ -47,8 +49,8 @@ class BaseModel:
         """
         new_dict = self.__dict__.copy()
         new_dict["__class__"] = self.__class__.__name__
-        new_dict['created_at'] = self.created_at.isoformat()
-        new_dict['updated_at'] = self.updated_at.isoformat()
+        new_dict["created_at"] = self.created_at.isoformat()
+        new_dict["updated_at"] = self.updated_at.isoformat()
         return new_dict
 
     @staticmethod
@@ -63,9 +65,9 @@ class BaseModel:
 
     def _assign_attributes(self, attrubutes):
         """Assigns the attrubutes from kwargs"""
+        formatStr = "%Y-%m-%dT%H:%M:%S.%f"
         for key, value in attrubutes.items():
-            if key == "created_at" or key == 'updated_at':
-                self.__dict__[key] = datetime.strptime(
-                    value, "%Y-%m-%dT%H:%M:%S.%f")
+            if key == "created_at" or key == "updated_at":
+                self.__dict__[key] = datetime.strptime(value, formatStr)
             else:
                 self.__dict__[key] = value
