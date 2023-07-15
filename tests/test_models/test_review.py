@@ -8,8 +8,7 @@ from models.review import Review
 
 class TestReview(unittest.TestCase):
     def setUp(self):
-        """Setting Instantiation
-        """
+        """Setting Instantiation"""
         self.review = Review()
 
     def test_default_attr(self):
@@ -19,8 +18,7 @@ class TestReview(unittest.TestCase):
         self.assertEqual(self.review.text, "")
 
     def test_update_attr(self):
-        """Testing updating of attributes
-        """
+        """Testing updating of attributes"""
         self.review.user_id = "MikEL6535"
         self.review.place_id = "Lagos33996"
         self.review.text = "i love lagos, it is a beautiful place to stay"
@@ -30,10 +28,8 @@ class TestReview(unittest.TestCase):
         self.assertEqual(
             self.review.text, "i love lagos, it is a beautiful place to stay"
         )
-    
+
     def test_inheritance(self):
-        """Testing the inheritance of the class Review
-        """
+        """Testing the inheritance of the class Review"""
         self.assertIsInstance(self.review, Review)
         self.assertIsInstance(self.review, BaseModel)
-        

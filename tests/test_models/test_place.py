@@ -36,7 +36,8 @@ class TestPlace(unittest.TestCase):
         self.assertEqual(self.place.name, "Tokyo House")
         self.assertEqual(self.place.city_id, "TOK123")
         self.assertEqual(self.place.user_id, "USER456")
-        self.assertEqual(self.place.description, "Cozy house in the heart of Tokyo")
+        self.assertEqual(
+            self.place.description, "Cozy house in the heart of Tokyo")
         self.assertEqual(self.place.number_rooms, 2)
         self.assertEqual(self.place.number_bathrooms, 1)
         self.assertEqual(self.place.max_guest, 3)
