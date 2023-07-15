@@ -6,10 +6,14 @@ from models.place import Place
 
 
 class TestPlace(unittest.TestCase):
+    """ Unittest for class Place """
+    
     def setUp(self):
+        """Setting Instantiation"""
         self.place = Place()
 
-    def test_attr_init(self):
+    def test_default_attr(self):
+        """Testing Default attributes"""
         self.assertEqual(self.place.name, "")
         self.assertEqual(self.place.city_id, "")
         self.assertEqual(self.place.user_id, "")
@@ -23,6 +27,7 @@ class TestPlace(unittest.TestCase):
         self.assertEqual(self.place.amenity_ids, [])
 
     def test_attr_assignment(self):
+        """Testing the inheritance of the class Review"""
         self.place.name = "Tokyo House"
         self.place.city_id = "TOK123"
         self.place.user_id = "USER456"
