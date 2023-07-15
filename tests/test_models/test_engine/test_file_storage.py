@@ -19,7 +19,8 @@ class TestFileStorage(unittest.TestCase):
         """Testing the all() method"""
         o = BaseModel()
         self.storage.new(o)
-        self.assertEqual(self.storage.all(), {o.__class__.__name__ + "." + o.id: o})
+        self.assertEqual(
+            self.storage.all(), {o.__class__.__name__ + "." + o.id: o})
 
     def test_new_user(self):
         """Testing the new() method"""
