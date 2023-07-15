@@ -15,15 +15,15 @@ class UserTestCase(unittest.TestCase):
         self.assertEqual(self.user.last_name, "")
 
     def test_update_attr(self):
-        self.user.email = "test@example.com"
-        self.user.password = "password123"
-        self.user.first_name = "John"
-        self.user.last_name = "Doe"
+        self.user.email = "sakata@example.com"
+        self.user.password = "zuuurrrraaaa"
+        self.user.first_name = "Sakata"
+        self.user.last_name = "Gintoki"
 
-        self.assertEqual(self.user.email, "test@example.com")
-        self.assertEqual(self.user.password, "password123")
-        self.assertEqual(self.user.first_name, "John")
-        self.assertEqual(self.user.last_name, "Doe")
+        self.assertEqual(self.user.email, "sakata@example.com")
+        self.assertEqual(self.user.password, "zuuurrrraaaa")
+        self.assertEqual(self.user.first_name, "Sakata")
+        self.assertEqual(self.user.last_name, "Gintoki")
 
     def test_inheritance(self):
         self.assertIsInstance(self.user, User)
