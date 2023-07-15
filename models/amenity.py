@@ -10,6 +10,4 @@ class Amenity(BaseModel):
         BaseModel (class): A Base Class for sub classes
     """
 
-    place_id = ""
-    user_id = ""
-    text = ""
+    name = ""

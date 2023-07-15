@@ -10,6 +10,6 @@ class Review(BaseModel):
         BaseModel (class): A Base Class for sub classes
     """
 
-    name = ""
+    user_id = ""
     place_id = ""
     text = ""
