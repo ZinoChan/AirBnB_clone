@@ -15,14 +15,14 @@ Open the `100-index.html` file in your web browser to view the website.
 ## 📁 Project Structure:
 The project files are organized as follows:
 
-* index.html: The main HTML file containing the header, footer, filters box, and results sections.
-* styles/: Directory containing CSS files for different sections of the website.
-* common.css: Global styles for body and container.
-* header.css: Styles for the header section.
-* footer.css: Styles for the footer section.
-* filters.css: Styles for the filters box and dropdowns.
-* places.css: Styles for the results section.
-* images/: Directory storing images used in the project.
+* `index.html`: The main HTML file containing the header, footer, filters box, and results sections.
+* `styles/`: Directory containing CSS files for different sections of the website.
+* `common.css`: Global styles for body and container.
+* `header.css`: Styles for the header section.
+* `footer.css`: Styles for the footer section.
+* `filters.css`: Styles for the filters box and dropdowns.
+* `places.css`: Styles for the results section.
+* `images/`: Directory storing images used in the project.
 
 
 Thank you for exploring the AirBnB Clone - web static project! Have fun and happy coding! 😄🚀🏢🏠
