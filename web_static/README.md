@@ -9,7 +9,7 @@ The project is built using HTML, and CSS. It leverages the power of flexbox for 
 
 Clone the repository to your local machine using git clone [`repository-url`](https://github.com/ZinoChan/AirBnB_clone.git).
 Navigate to the project directory with `cd AirBnB_clone/web_static`.
-Open the `100-index.html` file in your web browser to view the website.
+Open the `103-index.html` file in your web browser to view the website.
 
 
 ## 📁 Project Structure:
