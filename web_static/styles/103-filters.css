@@ -105,12 +105,14 @@ ul.popover li:hover {
   .filters {
     flex-direction: row;
     height: 70px;
+    padding: 0;
   }
 
   .locations,
   .amenities {
     width: 25%;
     padding-left: 30px;
+    padding: 0 0.5em;
   }
 
   .amenities {
