@@ -2,6 +2,8 @@
 
 Welcome to the AirBnB Clone project! This project aims to recreate the functionality and layout of the popular Airbnb website. It includes a header, footer, filters box with dropdown, and results sections.
 
+# [Demo](https://zinochan.github.io/AirBnB_clone/web_static/)
+
 ## 📜 Description:
 The project is built using HTML, and CSS. It leverages the power of flexbox for responsive design and uses CSS classes to apply styling. The filters section contains contextual dropdowns for locations and amenities, while the results section displays places with detailed information.
 
