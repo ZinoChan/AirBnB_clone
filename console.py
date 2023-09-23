@@ -3,6 +3,7 @@
     point of the command interpreter
 """
 import cmd
+import re
 from models import storage
 from models.base_model import BaseModel
 from models.user import User
@@ -190,6 +191,39 @@ class HBNBCommand(cmd.Cmd):
 
         setattr(instances[key], attribute_name, attr_value)
         instances[key].save()
+
+    def do_count(self, arg):
+        """
+        Counts the number of instances of a specific class
+        """
+        count = 0
+        for obj in storage.all().values():
+            if arg == obj.__class__.__name__:
+                count += 1
+        print(count)
+
+    def default(self, arg):
+        command_map = {
+            "all": self.do_all,
+            "show": self.do_show,
+            "destroy": self.do_destroy,
+            "count": self.do_count,
+            "update": self.do_update
+        }
+
+        match = re.search(r"\.(\w+)\((.*?)\)$", arg)
+        if match:
+            class_name = arg[: match.start()]
+            command = match.group(1)
+            args = match.group(2).split(", ")
+
+            if command in command_map:
+                full_command = f"{command} {class_name} {' '.join(args)}"
+                self.onecmd(full_command)
+            else:
+                print(f"{arg}: command does not exist")
+        else:
+            return super().default(arg)
 
 
 if __name__ == "__main__":
