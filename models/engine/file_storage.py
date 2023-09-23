@@ -47,3 +47,4 @@ class FileStorage:
                     self.__objects[key] = obj
         else:
             return
+
