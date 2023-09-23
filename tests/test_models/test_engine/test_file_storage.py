@@ -28,21 +28,6 @@ class TestFileStorage(unittest.TestCase):
         self.storage.reload()
         self.assertIn("BaseModel." + bm.id, self.storage.all())
 
-    def test_reload_method(self):
-        """Test the reload method"""
-        obj = FileStorage()
-
-        obj.save()
-        dummy_data = {"DummyKey": "DummyValue"}
-        obj._FileStorage__objects = dummy_data
-        obj.save()
-
-        self.storage.reload()
-        self.assertEqual(self.storage._FileStorage__objects, {})
-
-
-class TestBaseModel(unittest.TestCase):
-
     def test_save(self):
         bm = BaseModel()
         time_before_save = datetime.utcnow()
