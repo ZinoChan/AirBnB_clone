@@ -28,7 +28,11 @@ class TestFileStorage(unittest.TestCase):
         self.storage.reload()
         self.assertIn("BaseModel." + bm.id, self.storage.all())
 
-
+    def test_save(self):
+        bm = BaseModel()
+        time_before_save = datetime.utcnow()
+        bm.save()
+        self.assertTrue(bm.updated_at > time_before_save)
 
 if __name__ == '__main__':
     unittest.main()
