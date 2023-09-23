@@ -37,8 +37,3 @@ class BaseModel:
         dict_rep["created_at"] = dict_rep["created_at"].isoformat()
         dict_rep["updated_at"] = dict_rep["updated_at"].isoformat()
         return dict_rep
-
-
-bm1 = BaseModel()
-bm2 = BaseModel(**bm1.to_dict())
-print(bm1.id == bm2.id)
