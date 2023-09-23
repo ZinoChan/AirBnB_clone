@@ -3,13 +3,27 @@
     point of the command interpreter
 """
 import cmd
-from models.base_model import BaseModel
 from models import storage
+from models.base_model import BaseModel
+from models.user import User
+from models.state import State
+from models.city import City
+from models.place import Place
+from models.amenity import Amenity
+from models.review import Review
 
 
 class HBNBCommand(cmd.Cmd):
     prompt = "(hbnb) "
-    allowed_classes = {"BaseModel": BaseModel}
+    allowed_classes = {
+        "BaseModel": BaseModel,
+        "User": User,
+        "State": State,
+        "City": City,
+        "Amenity": Amenity,
+        "Place": Place,
+        "Review": Review,
+    }
 
     def emptyline(self):
         """Do nothing on empty input line"""
@@ -165,7 +179,7 @@ class HBNBCommand(cmd.Cmd):
         if attribute_name in ["id", "created_at", "updated_at"]:
             return
 
-        attr_value = args[3].strip("\"")
+        attr_value = args[3].strip('"')
         try:
             attr_value = int(attr_value)
         except ValueError:
@@ -176,6 +190,7 @@ class HBNBCommand(cmd.Cmd):
 
         setattr(instances[key], attribute_name, attr_value)
         instances[key].save()
+
 
 if __name__ == "__main__":
     HBNBCommand().cmdloop()
