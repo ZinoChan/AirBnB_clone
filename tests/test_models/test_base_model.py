@@ -64,6 +64,13 @@ class TestBaseModel(unittest.TestCase):
         self.assertIn(self.base_model.id, base_model_str)
         self.assertIn(str(self.base_model.__dict__), base_model_str)
 
+class TestBaseModel(unittest.TestCase):
+
+    def test_save(self):
+        bm = BaseModel()
+        time_before_save = datetime.utcnow()
+        bm.save()
+        self.assertTrue(bm.updated_at > time_before_save)
 
 if __name__ == "__main__":
     unittest.main()
